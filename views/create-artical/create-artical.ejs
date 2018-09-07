@@ -1,0 +1,56 @@
+<% include ../common/header.ejs %>
+
+
+<div class="create-artical">
+    <form class="ui form segment" method="POST" action="/create" enctype="multipart/form-data">
+        <div class="field required">
+            <label>标题</label>
+            <input type="text" name="title" class="ui">
+        </div>
+        <div class="field required">
+            <label>作者</label>
+            <input type="text" name="author" class="ui">
+        </div>
+        <div class="field required">
+            <label>简介</label>
+            <textarea name="content" rows="8" class="ui"></textarea>
+        </div>
+        <div class="field required">
+            <label>分类</label>
+            <select name="category">
+                <option value ="volvo">Volvo</option>
+                <option value ="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+            </select>
+        </div>
+
+        <div class="field required">
+            <label>选择文件</label>
+            <input type="file" name="articalFile">
+        </div>
+
+        <div class="field required">
+            <input type="submit" value="发布">
+        </div>
+
+
+    </form>
+
+</div>
+
+
+<style type="text/css">
+    .field {
+        margin-top: 10px;
+    }
+    .create-artical {
+        margin: 0 auto;
+        width: 500px;
+    }
+    .ui {
+        width: 500px;
+    }
+</style>
+
+<% include ../common/footer.ejs %>

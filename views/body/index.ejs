@@ -1,0 +1,115 @@
+
+<% include ../common/header.ejs %>
+<% include ../common/navbar.ejs %>
+
+<style>
+
+    a:hover {
+        text-decoration:none;
+    }
+
+    h3 {
+        color: #0f0f0f;
+    }
+
+    .atrical-list {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    .artical-item {
+        margin-top: 30px;
+        color: #5e5e5e;
+
+    }
+
+    .sidebar {
+        margin-top: 30px;
+        padding-right: 10%;
+
+    }
+    .widget{
+        font-size: 16px;
+        ont-family: "FontAwesome";
+        color: gray;
+        margin-top: 30px;
+    }
+    .widget-title {
+        border-bottom: 1px solid #dddddd;
+        line-height: 2.7;
+    }
+    .fa {
+        display: inline-block;
+        font-size: inherit;
+
+        font-family: "FontAwesome";
+
+    }
+
+    .widget ul{
+        list-style:none;
+    }
+
+    .category-list {
+        margin-top: 30px;
+    }
+
+</style>
+
+<script type="text/javascript">
+
+    function sayhello() {
+        console.log('helloworld');
+    }
+
+
+</script>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-9 col-md-9 ">
+            <ul class="atrical-list">
+                <% for(var i = 0; i < articals.length; i++) { %>
+                <%var artical = articals[i];%>
+                <li class="artical-item">
+                    <a class="artical-item-link" href="/artical/<%= artical._id%>" >
+                        <h3><%= artical.title%></h3>
+                    </a>
+                    <p>time：<%= artical.created_at%></p>
+                    <p><%= artical.content%></p>
+                </li>
+                <%}%>
+            </ul>
+        </div>
+        <div class="col-xs-3 col-md-3 ">
+
+            <div class="sidebar">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h5 class="fa">分类</h5>
+                    </div>
+                    <ul class="category-list">
+                        <li>ios</li>
+                        <li>solidity</li>
+                    </ul>
+
+                </div>
+                
+                <div class="widget">
+                    <div class="widget-title">
+                        <h5 class="fa">二维码</h5>
+                    </div>
+                    <img src="./images/GNfever.jpg">
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-xs-12" style="background-color: #2aabd2">我是页脚</div>
+    </div>
+</div>
+
+<% include ../common/footer.ejs %>
