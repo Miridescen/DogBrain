@@ -11,6 +11,11 @@
     h3 {
         color: #0f0f0f;
     }
+    .category-item{
+        text-decoration:none;
+        margin-top: 10px;
+        color: #5e5e5e;
+    }
 
     .atrical-list {
         padding-left: 20%;
@@ -90,8 +95,14 @@
                         <h5 class="fa">分类</h5>
                     </div>
                     <ul class="category-list">
-                        <li>ios</li>
-                        <li>solidity</li>
+                        <% for(var i = 0; i < categorys.length; i++){ %>
+                        <% var category = categorys[i];%>
+                        <li class="category-item">
+                            <a class="artical-category-link" href="/<%= category.name%>" >
+                                <%= category.name%>
+                            </a>
+                        </li>
+                        <% } %>
                     </ul>
 
                 </div>

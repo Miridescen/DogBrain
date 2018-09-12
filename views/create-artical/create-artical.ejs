@@ -18,10 +18,11 @@
         <div class="field required">
             <label>分类</label>
             <select name="category">
-                <option value ="volvo">Volvo</option>
-                <option value ="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+
+                <% for (var i = 0; i < categorys.length; i++) { %>
+                <% var categoty = categorys[i] %>
+                <option value ="<%= categoty.name%>"><%= categoty.name%></option>
+                <% } %>
             </select>
         </div>
 

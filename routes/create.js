@@ -2,15 +2,19 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var path = require('path');
-
-var marked = require('marked');
-var db = require('../controller/db.js');
 var multer  = require('multer');
+var marked = require('marked');
+
+var db = require('../controller/db.js');
+var articalCategoryDB = require('../controller/articalCategoryDB.js');
+
+
+
 
 var storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
-        cb(null, 'markdown')  //设定文件上传路径
+        cb(null, '../markdown/')  //设定文件上传路径
     },
     //给上传文件重命名，获取添加后缀名
     filename: function (req, file, cb) {
@@ -34,24 +38,37 @@ var upload = multer ({storage:storage})
 router.post('/', upload.array('articalFile',1),function (req, res, next) {
 
     var body = req.body;
+
+    console.log(req.body);
     var file = req.files[0];
 
     var artical = {
         title: body.title,
         author: body.author,
         content: body.content,
-        file_name: file.filename
+        file_name: file.filename,
+        categorys: Array(body.category)
     };
 
     db.insertOneArtical(artical, function (articals) {
         console.log(articals);
-        res.render('../views/create-artical/create-artical');
+        articalCategoryDB.findArticalCategory(function (category){
+
+            res.render('../views/create-artical/create-artical', {categorys: category});
+
+        });
     });
 
 });
 
 router.get('/', function (req, res, next) {
-    res.render('../views/create-artical/create-artical');
+    articalCategoryDB.findArticalCategory(function (category){
+
+        res.render('../views/create-artical/create-artical', {categorys: category});
+
+    });
+
+
 });
 
 module.exports = router;

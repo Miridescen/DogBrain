@@ -2,10 +2,12 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var marked = require('marked');
-var db = require('../controller/db.js');
+
 var multer  = require('multer');
 var upload = multer();
 
+var db = require('../controller/db.js');
+var articalCategoryDB = require('../controller/articalCategoryDB.js');
 
 // var app = express();
 
@@ -14,10 +16,24 @@ var upload = multer();
 router.get('/', function(req, res, next) {
 
     db.findArtical(null, function (articals) {
-        res.render('body/index', {articals:articals});
+
+        articalCategoryDB.findArticalCategory(function (categorys) {
+            res.render('body/index', {articals:articals, categorys:categorys});
+        });
+
     });
 
 });
+
+router.get('/:category', function (req, res, next) {
+    var category = req.params.category;
+    db.findArticalByCategory(category, function (articals) {
+
+        articalCategoryDB.findArticalCategory(function (categorys) {
+            res.render('body/index', {articals:articals, categorys:categorys});
+        });
+    })
+})
 
 router.get('/artical/:articalID', function (req, res, next) {
     var articalID = req.params.articalID;
@@ -25,7 +41,7 @@ router.get('/artical/:articalID', function (req, res, next) {
     db.findArtical(articalID, function (artical) {
 
         console.log(artical);
-        fs.readFile('markdown/'+ artical.file_name, function (err, data) {
+        fs.readFile('../markdown/'+ artical.file_name, function (err, data) {
             if (err) {
                 console.log(err);
             }

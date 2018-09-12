@@ -28,7 +28,7 @@ var userModel = mongoose.model('user', userSchema);
 // 分类模型
 var artical_categorySchema = new mongoose.Schema({
     name: String,
-    num: Number
+    created_at: String
 });
 
 //

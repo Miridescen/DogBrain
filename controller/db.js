@@ -13,23 +13,24 @@ module.exports = {
             created_at: moment().format('YYYY-MM-DD'),
             author: artical.author,
             content: artical.content,
-            file_name: artical.file_name
-        })
+            file_name: artical.file_name,
+            category: artical.categorys
+        });
 
         artical.save(function (err, artical) {
             if (err) return console.log(err);
 
             callback(artical);
-        })
+        });
     },
 
     findArtical : function findArtical(articalID, callback) {
         console.log(articalID);
         if (articalID == null) {
-            articalModel.find(function (err, artical) {
-                if (err) return console.log(err);
-                callback(artical);
 
+            articalModel.find().sort({'_id':-1}).limit(10).exec(function(err,docs){
+                if (err) return console.log(err);
+                callback(docs);
             })
 
         } else  {
@@ -39,6 +40,20 @@ module.exports = {
             });
         }
 
+    },
+
+    findArticalByCategory : function findArticalByCategory(categoryName, callback) {
+        if (categoryName == null) return;
+
+        console.log(categoryName);
+
+        articalModel.find({category: { $elemMatch: {$eq:categoryName}} }).sort({'_id':-1}).limit(10).exec(function(err,docs){
+
+            console.log(docs);
+
+            if (err) return console.log(err);
+            callback(docs);
+        })
     }
 
 
