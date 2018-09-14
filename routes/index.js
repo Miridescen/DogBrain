@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/:category', function (req, res, next) {
+router.get('/category/:category', function (req, res, next) {
     var category = req.params.category;
     db.findArticalByCategory(category, function (articals) {
 
