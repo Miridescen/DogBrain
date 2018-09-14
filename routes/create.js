@@ -14,7 +14,7 @@ var articalCategoryDB = require('../controller/articalCategoryDB.js');
 var storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
-        cb(null, '../markdown/')  //设定文件上传路径
+        cb(null, '../markdown')  //设定文件上传路径
     },
     //给上传文件重命名，获取添加后缀名
     filename: function (req, file, cb) {
