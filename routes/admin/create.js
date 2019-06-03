@@ -5,8 +5,9 @@ var path = require('path');
 var multer  = require('multer');
 var marked = require('marked');
 
-var db = require('../controller/db.js');
-var articalCategoryDB = require('../controller/articalCategoryDB.js');
+var db = require('../../controller/db.js');
+var articalCategoryDB = require('../../controller/articalCategoryDB.js');
+var categoryDB = require('../../controller/categoryDB.js');
 
 
 
@@ -14,7 +15,7 @@ var articalCategoryDB = require('../controller/articalCategoryDB.js');
 var storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
-        cb(null, '../markdown')  //设定文件上传路径
+        cb(null, `${__dirname}/../markdown`)  //设定文件上传路径
     },
     //给上传文件重命名，获取添加后缀名
     filename: function (req, file, cb) {
@@ -37,11 +38,8 @@ var upload = multer ({storage:storage})
 
 router.get('/', function (req, res, next) {
 
-    console.log("123");
-    articalCategoryDB.findArticalCategory(function (category){
-
+    categoryDB.findCategory(function (category) {
         res.render('../views/create-artical/create-artical', {categorys: category});
-
     });
 
 
@@ -67,7 +65,7 @@ router.post('/', upload.array('articalFile',1),function (req, res, next) {
         console.log(articals);
         articalCategoryDB.findArticalCategory(function (category){
 
-            res.render('../views/create-artical/create-artical', {categorys: category});
+            res.render('../../views/create-artical/create-artical', {categorys: category});
 
         });
     });

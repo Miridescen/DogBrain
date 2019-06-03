@@ -25,21 +25,23 @@ var userSchema = new mongoose.Schema({
 });
 var userModel = mongoose.model('user', userSchema);
 
-// 分类模型
-var artical_categorySchema = new mongoose.Schema({
-    name: String,
-    created_at: String
-});
 
-//
-var artical_categoryModel = mongoose.model('category', artical_categorySchema);
+//分类模型
+var categorySchema = new mongoose.Schema({
+   name: String,
+   module: String,
+   created_at: String
+});
+var categoryModel = mongoose.model('category', categorySchema);
+
+
 module.exports = {
 
     articalModel : articalModel,
 
     userModel : userModel,
 
-    artical_categoryModel: artical_categoryModel
+    categoryModel : categoryModel
 
 
 }

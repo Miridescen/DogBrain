@@ -8,6 +8,7 @@ var upload = multer();
 
 var db = require('../controller/db.js');
 var articalCategoryDB = require('../controller/articalCategoryDB.js');
+var categoryDB = require('../controller/categoryDB.js');
 
 // var app = express();
 
@@ -17,9 +18,10 @@ router.get('/', function(req, res, next) {
 
     db.findArtical(null, function (articals) {
 
-        articalCategoryDB.findArticalCategory(function (categorys) {
+        categoryDB.findCategoryByModule('推荐', function (categorys) {
             res.render('body/index', {articals:articals, categorys:categorys});
-        });
+        })
+
 
     });
 
@@ -41,7 +43,7 @@ router.get('/artical/:articalID', function (req, res, next) {
     db.findArtical(articalID, function (artical) {
 
         console.log(artical);
-        fs.readFile('../markdown/'+ artical.file_name, function (err, data) {
+        fs.readFile(`${__dirname}/../markdown/`+ artical.file_name, function (err, data) {
             if (err) {
                 console.log(err);
             }

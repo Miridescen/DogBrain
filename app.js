@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var createRouter = require('./routes/create');
+var createRouter = require('./routes/admin/create');
+var adminRouter = require('./routes/admin/admin');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use('/', indexRouter);
 app.use('/create', createRouter);
 app.use('/users', usersRouter);
+app.use("/admin", adminRouter);
 
 
 
