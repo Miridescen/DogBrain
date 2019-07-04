@@ -39,7 +39,7 @@ var upload = multer ({storage:storage})
 router.get('/', function (req, res, next) {
 
     categoryDB.findCategory(function (category) {
-        res.render('../views/create-artical/create-artical', {categorys: category});
+        res.render('../../views/create-artical/create-artical', {categorys: category});
     });
 
 
@@ -48,9 +48,6 @@ router.get('/', function (req, res, next) {
 router.post('/', upload.array('articalFile',1),function (req, res, next) {
 
     var body = req.body;
-
-    console.log(req.body);
-    console.log("11111");
     var file = req.files[0];
 
     var artical = {

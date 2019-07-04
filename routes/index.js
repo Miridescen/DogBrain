@@ -9,6 +9,7 @@ var upload = multer();
 var db = require('../controller/db.js');
 var articalCategoryDB = require('../controller/articalCategoryDB.js');
 var categoryDB = require('../controller/categoryDB.js');
+var result = require('../tool/packagePort.js');
 
 // var app = express();
 
@@ -19,7 +20,7 @@ router.get('/', function(req, res, next) {
     db.findArtical(null, function (articals) {
 
         categoryDB.findCategoryByModule('推荐', function (categorys) {
-            res.render('body/index', {articals:articals, categorys:categorys});
+            res.render('body/index.ejs', {articals:articals, categorys:categorys});
         })
 
 
@@ -32,7 +33,7 @@ router.get('/category/:category', function (req, res, next) {
     db.findArticalByCategory(category, function (articals) {
 
         articalCategoryDB.findArticalCategory(function (categorys) {
-            res.render('body/index', {articals:articals, categorys:categorys});
+            res.render('body/index.ejs', {articals:articals, categorys:categorys});
         });
     })
 })
@@ -48,20 +49,42 @@ router.get('/artical/:articalID', function (req, res, next) {
                 console.log(err);
             }
             var str = marked(data.toString());
-            res.render('body/artical-show', { artical: artical, content:str});
+            res.render('body/artical-show.ejs', { artical: artical, content:str});
 
         })
 
     })
-})
+});
+
+
 
 router.get('/archive', function (req, res, next) {
 
     db.findArtical(0, function (articals) {
 
-        res.render('./body/artical-list', {articals:articals});
+        res.render('./body/artical-list.ejs', {articals:articals});
     });
 
+
+});
+
+
+router.post('/artical/list.json', function (req, res, next) {
+
+    let body = req.body;
+
+    var index = body.index;
+    var pageSize = body.pageSize;
+
+    var curIndex = Number.isNaN(parseInt(index)) ? 1 : parseInt(index);
+    var curPageSize = Number.isNaN(parseInt(pageSize)) ? 10 : parseInt(pageSize);
+
+    db.findArticalForPage(curIndex, curPageSize, function (totalCount, datas) {
+
+        result.resultData(curIndex, curPageSize, totalCount, datas, function (data) {
+            res.json(data);
+        })
+    })
 
 });
 

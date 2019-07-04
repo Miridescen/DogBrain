@@ -14,6 +14,7 @@ var articalSchema = new mongoose.Schema({
     author: String,
     content: String,
     file_name: String,
+    module: Array,
     category: Array
 });
 var articalModel = mongoose.model('artical', articalSchema);
@@ -30,6 +31,7 @@ var userModel = mongoose.model('user', userSchema);
 var categorySchema = new mongoose.Schema({
    name: String,
    module: String,
+    desc: String,
    created_at: String
 });
 var categoryModel = mongoose.model('category', categorySchema);

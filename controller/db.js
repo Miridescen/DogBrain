@@ -14,7 +14,8 @@ module.exports = {
             author: artical.author,
             content: artical.content,
             file_name: artical.file_name,
-            category: artical.categorys
+            category: artical.categorys,
+            module: artical.module
         });
 
         artical.save(function (err, artical) {
@@ -54,6 +55,24 @@ module.exports = {
             if (err) return console.log(err);
             callback(docs);
         })
+    },
+
+    findArticalForPage: function findArticalForPage(index, pageSize, callback) {
+
+        // var curIndex = parseInt(index);
+        // var curPageSize = parseInt(pageSize);
+
+        articalModel.countDocuments((err, count)=>{
+
+            if (err) return console.log('err = '+err);
+            articalModel.find().sort({'_id':-1}).limit(pageSize).skip((index-1)*pageSize).exec(function (err, docs) {
+
+                if (err) return console.log('err = '+err);
+                callback(count, docs);
+            })
+        })
+
+
     }
 
 

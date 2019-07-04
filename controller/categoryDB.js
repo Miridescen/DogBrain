@@ -5,11 +5,12 @@ var categoryModel = models.categoryModel;
 
 module.exports = ({
 
-    createCategory: function createCategory(categoryName, moduleName, callback) {
+    createCategory: function createCategory(categoryName, moduleName, desc, callback) {
         var category = new categoryModel({
             name: categoryName,
             module: moduleName,
-            created_at: moment().format('YY-MM-DD')
+            desc: desc,
+            created_at: moment().format('YYYY-MM-DD')
 
         });
 
@@ -26,11 +27,31 @@ module.exports = ({
         })
     },
 
+    findCategoryForPage: function findCategoryForPage(index, pageSize, callback){
+        categoryModel.countDocuments((err, count)=>{
+
+            if (err) return console.log('err = '+err);
+            categoryModel.find().sort({'_id':-1}).limit(pageSize).skip((index-1)*pageSize).exec((err, docs) =>{
+                if (err) return console.log('err = '+err);
+                callback(count, docs);
+            })
+        })
+    },
+
     findCategoryByModule: function findCategoryByModule(moduleName, callback) {
 
-        categoryModel.find({'module': moduleName}, function (err, results) {
-            if (err) console.log(err);
+        categoryModel.find({module: moduleName}, function (err, results) {
+            if (err)  return console.log(err);
             callback(results);
+        })
+
+    },
+
+    deleteCategoryById: function deleteCategoryById(id, callback) {
+
+        categoryModel.deleteOne({_id : id}, function (err) {
+            if (err) return console.log(err);
+            callback();
         })
 
     }
