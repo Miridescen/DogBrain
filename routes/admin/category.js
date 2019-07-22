@@ -60,8 +60,11 @@ router.post('/removeOne.json', function (req, res, next) {
 });
 
 router.post('/find.json', function (req, res, next) {
+
     var body = req.body;
+    console.log(body);
     categoryDB.findCategoryByModule(body['module'], function (data) {
+        console.log(data);
         result.resultOneData(data, function (result) {
             res.json(result);
         })

@@ -8,9 +8,10 @@ var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var createRouter = require('./routes/admin/create');
+var articalRouter = require('./routes/artical');
 var adminRouter = require('./routes/admin/admin');
-var categoryRouter = require('./routes/admin/category');
-var articalRouter = require('./routes/admin/artical');
+var adminCategoryRouter = require('./routes/admin/category');
+var adminArticalRouter = require('./routes/admin/artical');
 
 var app = express();
 
@@ -34,12 +35,22 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
+app.all('*', function (req, res, next){
+    res.header("Access-Control-Allow-Origin", "*");//   http://www.yueyanshaosun.cn,http://www.baidu.com,www,...
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With,Origin,Access-Control-Allow-Origin");
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    // if (req.method == "OPTIONS") res.send(200);/*让options请求快速返回*/
+    // else next();
+    next();
+});
+
 app.use('/', indexRouter);
 app.use('/create', createRouter);
 app.use('/users', usersRouter);
+app.use('/artical', articalRouter);
 app.use("/admin", adminRouter);
-app.use("/admin/category", categoryRouter);
-app.use("/admin/artical", articalRouter);
+app.use("/admin/category", adminCategoryRouter);
+app.use("/admin/artical", adminArticalRouter);
 
 
 
@@ -58,5 +69,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

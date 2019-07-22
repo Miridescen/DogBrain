@@ -27,7 +27,12 @@ module.exports = {
         console.log(articalID);
         articalModel.find({_id: articalID}).exec(function(err,docs){
             if (err) return console.log(err);
-            callback(docs);
+            if (docs.length>0){
+                callback(docs[0]);
+            } else {
+                return;
+            }
+
         })
 
     },
@@ -46,17 +51,20 @@ module.exports = {
         })
     },
 
-    findArticalByModule: function findArticalByModule(module, callback){
+    findArticalByModule: function findArticalByModule(module, index, pageSize, callback){
         if (module == null) return;
 
-        console.log(categoryName);
+        console.log(module);
 
-        articalModel.find({module: { $elemMatch: {$eq:module}} }).sort({'_id':-1}).limit(10).exec(function(err,docs){
 
-            console.log(docs);
+        articalModel.countDocuments({module: { $elemMatch: {$eq:module}} }, (err, count)=>{
 
-            if (err) return console.log(err);
-            callback(docs);
+            if (err) return console.log('err = '+err);
+            articalModel.find({module: { $elemMatch: {$eq:module}} }).sort({'_id':-1}).limit(pageSize).skip((index-1)*pageSize).exec(function (err, docs) {
+
+                if (err) return console.log('err = '+err);
+                callback(count, docs);
+            })
         })
     },
 
@@ -71,8 +79,29 @@ module.exports = {
                 callback(count, docs);
             })
         })
+    },
+
+    findArtical: function findArtical(category, module, index, pageSize, callback) {
+
+        var query = {};
+        if (typeof category != "undefined") {
+            query['category'] = { $elemMatch: {$eq:category}}
+        }
+        if (typeof module != "undefined") {
+            query['module'] = { $elemMatch: {$eq:module}}
+        }
 
 
+        // {module: { $elemMatch: {$eq:module}}, category: { $elemMatch: {$eq:category}}}
+        articalModel.countDocuments(query, (err, count)=>{
+
+            if (err) return console.log('err = '+err);
+            articalModel.find(query).sort({'_id':-1}).limit(pageSize).skip((index-1)*pageSize).exec(function (err, docs) {
+
+                if (err) return console.log('err = '+err);
+                callback(count, docs);
+            })
+        })
     },
 
     deleteArticalByID: function deleteArticalByID(id, callback) {

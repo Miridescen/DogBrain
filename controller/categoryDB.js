@@ -40,7 +40,7 @@ module.exports = ({
 
     findCategoryByModule: function findCategoryByModule(moduleName, callback) {
 
-        categoryModel.find({module: moduleName}, function (err, results) {
+        categoryModel.find({'module': moduleName}, function (err, results) {
             if (err)  return console.log(err);
             callback(results);
         })

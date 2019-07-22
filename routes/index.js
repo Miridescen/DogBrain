@@ -69,24 +69,5 @@ router.get('/archive', function (req, res, next) {
 });
 
 
-router.post('/artical/list.json', function (req, res, next) {
-
-    let body = req.body;
-
-    var index = body.index;
-    var pageSize = body.pageSize;
-
-    var curIndex = Number.isNaN(parseInt(index)) ? 1 : parseInt(index);
-    var curPageSize = Number.isNaN(parseInt(pageSize)) ? 10 : parseInt(pageSize);
-
-    db.findArticalForPage(curIndex, curPageSize, function (totalCount, datas) {
-
-        result.resultData(curIndex, curPageSize, totalCount, datas, function (data) {
-            res.json(data);
-        })
-    })
-
-});
-
 
 module.exports = router;
