@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/blog');
+mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser:true});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -36,6 +36,18 @@ var categorySchema = new mongoose.Schema({
 });
 var categoryModel = mongoose.model('category', categorySchema);
 
+//信息流模型（首页数据）
+var newsSchema = new mongoose.Schema({
+    media: String,
+    media_url: String,
+    url: String,
+    full_url: String,
+    title: String,
+    image_url: String
+
+})
+var newsModel = mongoose.model('news', newsSchema);
+
 
 module.exports = {
 
@@ -43,7 +55,9 @@ module.exports = {
 
     userModel : userModel,
 
-    categoryModel : categoryModel
+    categoryModel : categoryModel,
+
+    newsModel: newsModel
 
 
 }

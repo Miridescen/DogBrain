@@ -7,11 +7,11 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var createRouter = require('./routes/admin/create');
 var articalRouter = require('./routes/artical');
 var adminRouter = require('./routes/admin/admin');
 var adminCategoryRouter = require('./routes/admin/category');
 var adminArticalRouter = require('./routes/admin/artical');
+var newsRouter = require('./routes/news');
 
 var app = express();
 
@@ -45,7 +45,7 @@ app.all('*', function (req, res, next){
 });
 
 app.use('/', indexRouter);
-app.use('/create', createRouter);
+app.use('/news', newsRouter);
 app.use('/users', usersRouter);
 app.use('/artical', articalRouter);
 app.use("/admin", adminRouter);

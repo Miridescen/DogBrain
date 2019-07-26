@@ -7,12 +7,9 @@ var multer  = require('multer');
 var upload = multer();
 
 var db = require('../controller/db.js');
-var articalCategoryDB = require('../controller/articalCategoryDB.js');
 var categoryDB = require('../controller/categoryDB.js');
+var newsDB = require('../controller/newsDB.js');
 var result = require('../tool/packagePort.js');
-
-// var app = express();
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,20 +20,9 @@ router.get('/', function(req, res, next) {
             res.render('body/index.ejs', {articals:articals, categorys:categorys});
         })
 
-
     });
 
 });
-
-router.get('/category/:category', function (req, res, next) {
-    var category = req.params.category;
-    db.findArticalByCategory(category, function (articals) {
-
-        articalCategoryDB.findArticalCategory(function (categorys) {
-            res.render('body/index.ejs', {articals:articals, categorys:categorys});
-        });
-    })
-})
 
 router.get('/artical/:articalID', function (req, res, next) {
     var articalID = req.params.articalID;
@@ -56,17 +42,6 @@ router.get('/artical/:articalID', function (req, res, next) {
     })
 });
 
-
-
-router.get('/archive', function (req, res, next) {
-
-    db.findArtical(0, function (articals) {
-
-        res.render('./body/artical-list.ejs', {articals:articals});
-    });
-
-
-});
 
 
 

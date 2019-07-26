@@ -41,7 +41,6 @@ router.post('/find/by/id.json', function (req, res, next) {
                 return;
             }
             var str = marked(data.toString());
-            // var str = data.toString();
 
             artObj['artical_content'] = str;
 
