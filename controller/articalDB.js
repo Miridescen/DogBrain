@@ -13,7 +13,8 @@ module.exports = {
             content: artical.content,
             file_name: artical.file_name,
             category: artical.category,
-            module: artical.module
+            module: artical.module,
+            detail: artical.detail
         });
 
         artical_model.save(function (err, artical) {

@@ -35,18 +35,19 @@ router.post('/find/by/id.json', function (req, res, next) {
         var a = JSON.stringify(datas);
         var artObj = JSON.parse(a);
 
-        fs.readFile(`${__dirname}/../markdown/`+ artObj.file_name, function (err, data) {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            var str = marked(data.toString());
-
-            artObj['artical_content'] = str;
-
-            res.json(artObj);
-
-        })
+        // fs.readFile(`${__dirname}/../markdown/`+ artObj.file_name, function (err, data) {
+        //     if (err) {
+        //         console.log(err);
+        //         return;
+        //     }
+        //     var str = marked(data.toString());
+        //
+        //     artObj['artical_content'] = str;
+        //
+        //
+        //
+        // })
+        res.json(artObj);
 
 
     })

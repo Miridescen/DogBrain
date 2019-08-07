@@ -15,7 +15,9 @@ var articalSchema = new mongoose.Schema({
     content: String,
     file_name: String,
     module: Array,
-    category: Array
+    category: Array,
+    detail: String
+
 });
 var articalModel = mongoose.model('artical', articalSchema);
 

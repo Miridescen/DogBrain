@@ -9,6 +9,7 @@ var artical = require('../../controller/articalDB.js');
 var result = require('../../tool/packagePort.js');
 
 var fs = require('fs');
+var marked = require('marked');
 
 var storage = multer.diskStorage({
 
@@ -38,23 +39,44 @@ router.post('/createOne.json', upload.array('articalFile', 1),function (req, res
 
     var body = req.body;
 
-    var artical1 = {
-        title: body.name,
-        author: body.author,
-        content: body.content,
-        file_name: file.filename,
-        category: Array(body.category),
-        module: Array(body.module)
-    };
+    fs.readFile(`${__dirname}/../../markdown/`+ file.filename, function (err, data) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        var str = marked(data.toString());
+        console.log(str);
 
-    artical.createArtical(artical1, function (artical) {
+        var artical1 = {
+            title: body.name,
+            author: body.author,
+            content: body.content,
+            file_name: file.filename,
+            category: Array(body.category),
+            module: Array(body.module),
+            detail: str
+        };
 
-        result.resultOneData(artical, function (data) {
-            res.json(data);
+        artical.createArtical(artical1, function (artical) {
+
+            fs.unlink(`${__dirname}/../../markdown/`+ file.filename, function(err){
+                if(err){
+                    throw err;
+                }
+                console.log('文件:删除成功！');
+            })
+
+            result.resultOneData(artical, function (data) {
+                res.json(data);
+            });
+
+
         });
 
+    })
 
-    });
+
+
 
 });
 
