@@ -3,24 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f2b975c8-dcce-440a-bb60-6a8ee9516374" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/articalDB.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/articalDB.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/SCNetworkReachabilityGetFlag在iOS8中的坑-1563157988401.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/Solidity数据类型-1563158066846.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/__has_feature详解.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/aaa-1563420869115.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/iOS 将代码提交到cocoapods流程及一些错误总结-1563157847388.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/iOS中怎么定义一个block-1563157951628.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/iOS货币简写与货币符号转换-1563157889721.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/solidity中的引用类型——数组、结构体-1563158161445.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/solidity函数-1563158028680.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/solidity异常处理-1563158101039.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/数据库操作-1563504170897.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/浅谈对UINavigationController(导航控制器)的理解-1563157792719.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/markdown/隐私政策-1563504129816.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/models.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/models.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/admin/artical.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin/artical.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/artical.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/artical.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -55,26 +38,26 @@
       <file leaf-file-name="artical.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/artical.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
+            <state relative-caret-position="735">
               <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="articalDB.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="articalDB.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/articalDB.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="113" column="10" lean-forward="true" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
+            <state relative-caret-position="1740">
+              <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="artical.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="artical.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/admin/artical.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+            <state relative-caret-position="89">
+              <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -182,8 +165,8 @@
         <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/model/models.js" />
         <option value="$PROJECT_DIR$/routes/artical.js" />
-        <option value="$PROJECT_DIR$/routes/admin/artical.js" />
         <option value="$PROJECT_DIR$/controller/articalDB.js" />
+        <option value="$PROJECT_DIR$/routes/admin/artical.js" />
       </list>
     </option>
   </component>
@@ -198,10 +181,11 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="821" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="6" />
+    <option name="y" value="71" />
+    <option name="width" value="1406" />
+    <option name="height" value="782" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -211,6 +195,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -282,7 +267,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -351,21 +335,23 @@
       <workItem from="1563756034468" duration="15144000" />
       <workItem from="1563960804660" duration="8027000" />
       <workItem from="1564538874296" duration="7818000" />
-      <workItem from="1564969975203" duration="5154000" />
+      <workItem from="1564969975203" duration="8789000" />
+      <workItem from="1565923055656" duration="550000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189428000" />
+    <option name="totallyTimeSpent" value="193613000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="821" extended-state="6" />
+    <frame x="6" y="71" width="1406" height="782" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22410148" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18122743" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2762431" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29051095" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -679,24 +665,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controller/articalDB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1740">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/artical.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
+        <state relative-caret-position="735">
           <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/admin/artical.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/articalDB.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="113" column="10" lean-forward="true" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
+        <state relative-caret-position="89">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
         </state>
       </provider>
     </entry>

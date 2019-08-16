@@ -45,7 +45,6 @@ router.post('/createOne.json', upload.array('articalFile', 1),function (req, res
             return;
         }
         var str = marked(data.toString());
-        console.log(str);
 
         var artical1 = {
             title: body.name,
